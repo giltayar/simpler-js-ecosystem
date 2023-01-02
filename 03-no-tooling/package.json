@@ -1,0 +1,26 @@
+{
+  "name": "02-create-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.5.0",
+    "recoil": "^0.7.6",
+    "styled-components": "^5.3.6"
+  },
+  "scripts": {
+    "start": "serve ."
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26",
+    "prettier": "^2.8.1",
+    "serve": "^14.1.2"
+  }
+}

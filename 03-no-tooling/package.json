@@ -10,7 +10,13 @@
     "styled-components": "^5.3.6"
   },
   "scripts": {
-    "start": "serve ."
+    "start": "serve .",
+    "start:watch": "concurrently npm:build:watch npm:browser-sync",
+    "build": "npm run postcss",
+    "browser-sync": "browser-sync --no-ui --server . --port 3000 --files src --files public",
+    "postcss": "postcss src/**/*.css -d public --use postcss-modules",
+    "postcss:watch": "npm run postcss -- --watch",
+    "build:watch": "npm run postcss -- --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -20,6 +26,11 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
+    "browser-sync": "^2.27.11",
+    "concurrently": "^7.6.0",
+    "postcss": "^8.4.20",
+    "postcss-cli": "^10.1.0",
+    "postcss-modules": "^6.0.0",
     "prettier": "^2.8.1",
     "serve": "^14.1.2"
   }

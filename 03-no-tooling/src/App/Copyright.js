@@ -1,28 +1,18 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import {html} from 'htm/react'
 import { memo } from "react";
 const Copyright = memo(
   () =>
-    _jsxs("footer", {
-      className: "info",
-      children: [
-        _jsxs("p", {
-          children: [
-            "Created by",
-            " ",
-            _jsx("a", {
-              href: "https://ryota-murakami.github.io/",
-              children: "Ryota Murakamai",
-            }),
-          ],
-        }),
-        _jsxs("p", {
-          children: [
-            "Part of ",
-            _jsx("a", { href: "http://todomvc.com", children: "TodoMVC" }),
-          ],
-        }),
-      ],
-    }),
+    html`
+    <footer className="info">
+      <p>
+        Created by${' '}
+        <a href="https://ryota-murakami.github.io/">Ryota Murakamai</a>
+      </p>
+      <p>
+        Part of <a href="http://todomvc.com">TodoMVC</a>
+      </p>
+    </footer>
+    `,
   () => true
 );
 export default Copyright;

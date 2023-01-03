@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import {html} from 'htm/react'
 import { createRef } from "react";
 import { useRecoilState } from "recoil";
 import { recoilState } from "../../dataStructure.js";
@@ -22,24 +22,22 @@ const NewTodoTextInput = () => {
       textInput.current.value = "";
     }
   }
-  return _jsx(Layout, {
-    children: _jsxs("header", {
-      className: "header",
-      children: [
-        _jsx("h1", { children: "todos" }),
-        _jsx("input", {
-          type: "text",
-          className: "new-todo",
-          placeholder: "What needs to be done?",
-          ref: textInput,
-          onKeyPress: (e) => addTodo(e),
-          "data-testid": "new-todo-input-text",
-          "data-cy": "new-todo-input-text",
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus: true,
-        }),
-      ],
-    }),
-  });
+  return html`
+      <${Layout}>
+      <header className="header">
+        <h1>todos</h1>
+        <input
+          type="text"
+          className="new-todo"
+          placeholder="What needs to be done?"
+          ref=${textInput}
+          onKeyPress=${addTodo}
+          data-testid="new-todo-input-text"
+          data-cy="new-todo-input-text"
+          autoFocus
+        />
+      </header>
+    <//>
+  `;
 };
 export default NewTodoTextInput;

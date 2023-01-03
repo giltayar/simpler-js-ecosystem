@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import {html} from 'htm/react'
 import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { recoilState } from "../../dataStructure.js";
@@ -18,44 +18,37 @@ const TodoList = () => {
       })),
     });
   }
-  return _jsx(Layout, {
-    children: _jsxs("section", {
-      className: "main",
-      children: [
-        _jsx("input", {
-          id: "toggle-all",
-          className: "toggle-all",
-          type: "checkbox",
-          onChange: toggleAllCheckbox,
-          "data-cy": "toggle-all-btn",
-          "data-testid": "toggle-all-btn",
-        }),
-        _jsx("label", {
-          htmlFor: "toggle-all",
-          children: "Mark all as complete",
-        }),
-        _jsx("ul", {
-          className: "todo-list",
-          "data-testid": "todo-list",
-          children: appState.todoList
-            .filter((t) => {
+  return html`
+      <${Layout}>
+      <section className="main">
+        <input
+          id="toggle-all"
+          className="toggle-all"
+          type="checkbox"
+          onChange=${toggleAllCheckbox}
+          data-cy="toggle-all-btn"
+          data-testid="toggle-all-btn"
+        />
+        <label htmlFor="toggle-all">Mark all as complete</label>
+        <ul className="todo-list" data-testid="todo-list">
+          ${appState.todoList
+            .filter(t => {
               switch (pathname) {
-                case "/":
-                  return true;
-                case "/active":
-                  return t.completed === false;
-                case "/completed":
-                  return t.completed === true;
+                case '/':
+                  return true
+                case '/active':
+                  return t.completed === false
+                case '/completed':
+                  return t.completed === true
                 default:
-                  return true;
+                  return true
               }
             })
-            .map((t) => {
-              return _jsx(Item, { todo: t }, t.id);
-            }),
-        }),
-      ],
-    }),
-  });
+            .map(t => html`<${Item} key=${t.id} todo=${t} />`)
+          }
+        </ul>
+      </section>
+    <//>
+  `;
 };
 export default TodoList;

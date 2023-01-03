@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import {html} from 'htm/react';
 import { Component } from "react";
 import styled from "styled-components";
 class ErrorBoundary extends Component {
@@ -12,7 +12,7 @@ class ErrorBoundary extends Component {
   render() {
     const { error } = this.state;
     if (error) {
-      return _jsx(ErrorBoundaryFallbackComponent, {});
+      return html`<${ErrorBoundaryFallbackComponent} />`;
     }
     return this.props.children;
   }
@@ -32,16 +32,12 @@ const Message = styled.div`
   font-size: 24px;
   color: #78909c;
 `;
-const ErrorBoundaryFallbackComponent = () =>
-  _jsx(Layout, {
-    children: _jsxs(Message, {
-      children: [
-        "Something Error Ooccurring",
-        _jsx("span", {
-          role: "img",
-          "aria-label": "face-emoji",
-          children: "\uD83D\uDE1E",
-        }),
-      ],
-    }),
-  });
+const ErrorBoundaryFallbackComponent = () => html`
+    <${Layout}>
+    <${Message}>
+      Something Error Ooccurring
+      <span role="img" aria-label="face-emoji">
+        😞
+      </span>
+    <//>
+  <//>`;

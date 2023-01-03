@@ -1,8 +1,4 @@
-import {
-  jsx as _jsx,
-  Fragment as _Fragment,
-  jsxs as _jsxs,
-} from "react/jsx-runtime";
+import {html} from 'htm/react'
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { recoilState, LocalStorageKey } from "../dataStructure.js";
@@ -20,21 +16,19 @@ const TodoMVC = () => {
       JSON.stringify(appState) // convert JavaScript Object to string
     );
   }, [appState]);
-  return _jsxs(Layout, {
-    children: [
-      _jsxs("section", {
-        className: "todoapp",
-        children: [
-          _jsx(NewTodoInput, {}),
-          appState.todoList.length
-            ? _jsxs(_Fragment, {
-                children: [_jsx(TodoList, {}), _jsx(UnderBar, {})],
-              })
-            : null,
-        ],
-      }),
-      _jsx(Copyright, {}),
-    ],
-  });
+  return html`
+      <${Layout}>
+      <section className="todoapp">
+        <${NewTodoInput} />
+        ${appState.todoList.length ?
+          html`
+            <${TodoList} />
+            <${UnderBar} />
+          `
+          : null}
+      </section>
+      <${Copyright} />
+    </${Layout}>
+  `;
 };
 export default TodoMVC;

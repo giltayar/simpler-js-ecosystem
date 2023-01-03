@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import {html} from 'htm/react'
 import { useState, createRef, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { recoilState } from "../../../dataStructure.js";
@@ -72,50 +72,44 @@ const Item = ({ todo }) => {
     if (state.onEdit === true && editInput.current !== null)
       editInput.current.focus();
   }, [editInput, state.onEdit]);
-  return _jsx(Layout, {
-    "data-cy": "todo-item",
-    children: _jsxs("li", {
-      className: SwitchStyle(todo, state.onEdit),
-      "data-testid": "todo-item",
-      children: [
-        _jsxs("div", {
-          className: "view",
-          "data-testid": "view",
-          children: [
-            _jsx("input", {
-              className: "toggle",
-              type: "checkbox",
-              checked: todo.completed,
-              onChange: () => reverseCompleted(todo.id),
-              "data-cy": "todo-item-complete-check",
-              "data-testid": "todo-item-complete-check",
-            }),
-            _jsx("label", {
-              onClick: onClick,
-              "data-cy": "todo-body-text",
-              "data-testid": "todo-body-text",
-              children: todo.bodyText,
-            }),
-            _jsx("button", {
-              className: "destroy",
-              onClick: () => removeItem(todo.id),
-              "data-cy": "delete-todo-btn",
-              "data-testid": "delete-todo-btn",
-            }),
-          ],
-        }),
-        _jsx("input", {
-          ref: editInput,
-          onBlur: (e) => onBlurEdit(e),
-          className: "edit",
-          value: todo.bodyText,
-          onChange: (e) => handleTodoTextEdit(e, todo.id),
-          onKeyDown: (e) => submitEditText(e),
-          "data-cy": "todo-edit-input",
-          "data-testid": "todo-edit-input",
-        }),
-      ],
-    }),
-  });
+  return html`
+    <${Layout} data-cy="todo-item">
+      <li className=${SwitchStyle(todo, state.onEdit)} data-testid="todo-item">
+        <div className="view" data-testid="view">
+          <input
+            className="toggle"
+            type="checkbox"
+            checked=${todo.completed}
+            onChange=${() => reverseCompleted(todo.id)}
+            data-cy="todo-item-complete-check"
+            data-testid="todo-item-complete-check"
+          />
+          <label
+            onClick=${onClick}
+            data-cy="todo-body-text"
+            data-testid="todo-body-text"
+          >
+            ${todo.bodyText}
+          </label>
+          <button
+            className="destroy"
+            onClick=${() => removeItem(todo.id)}
+            data-cy="delete-todo-btn"
+            data-testid="delete-todo-btn"
+          />
+        </div>
+        <input
+          ref=${editInput}
+          onBlur=${onBlurEdit}
+          className="edit"
+          value=${todo.bodyText}
+          onChange=${e => handleTodoTextEdit(e, todo.id)}
+          onKeyDown=${e => submitEditText(e)}
+          data-cy="todo-edit-input"
+          data-testid="todo-edit-input"
+        />
+      </li>
+    <//>
+  `;
 };
 export default Item;

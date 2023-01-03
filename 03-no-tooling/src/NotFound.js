@@ -1,4 +1,4 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+import {html} from 'htm/react'
 const css = {
   alignItems: "center",
   display: "flex",
@@ -6,9 +6,9 @@ const css = {
   justifyContent: "center",
   width: "100%",
 };
+
 export const NotFound = () =>
-  _jsx("div", {
-    "data-cy": "not-found-page",
-    style: css,
-    children: _jsx("h1", { children: "Page Not Found" }),
-  });
+  html`
+    <div data-cy="not-found-page" style=${css}>
+      <h1>Page Not Found</h1>
+    </div>`

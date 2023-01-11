@@ -6,6 +6,9 @@ import ErrorBoundary from "../ErrorBoundary.js";
 import { NotFound } from "../NotFound.js";
 import TodoMVC from "./TodoMVC.js";
 
+/**
+ * @type {React.FC}
+ */
 const App = () => html`
 <${ErrorBoundary}>
   <${BrowserRouter}>

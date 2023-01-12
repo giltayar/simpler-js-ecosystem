@@ -23,7 +23,7 @@ import { atom } from "recoil";
  */
 
 /**@enum {string} */
-const LocalStorageKey = {
+export const LocalStorageKey = {
   APP_STATE: 'APP_STATE',
 }
 

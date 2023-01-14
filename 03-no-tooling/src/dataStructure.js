@@ -24,14 +24,10 @@ import { atom } from "recoil";
 
 /**@enum {string} */
 export const LocalStorageKey = {
-  APP_STATE: 'APP_STATE',
-}
+  APP_STATE: "APP_STATE",
+};
 
-/**
- * @returns {AppState}
- */
 function LoadAppStateFromLocalStorage() {
-  /**@type {string | null} */
   const stringifiedJSON = window.localStorage.getItem(
     LocalStorageKey.APP_STATE
   );
@@ -43,14 +39,12 @@ function LoadAppStateFromLocalStorage() {
     return Loaded;
   }
 
-  /**@type {AppState} */
   const BlankAppState = {
     todoList: [],
   };
   return BlankAppState;
 }
 
-/**@type {import("recoil").RecoilState<AppState>} */
 export const recoilState = atom({
   default: LoadAppStateFromLocalStorage(),
   key: "initialAppState",

@@ -1,12 +1,17 @@
-import {html} from 'htm/react'
+import { html } from "htm/react";
 import { createRef } from "react";
 import { useRecoilState } from "recoil";
 import { recoilState } from "../../dataStructure.js";
 import { UUID } from "../../functions.js";
 import { Layout } from "./style.js";
+
 const NewTodoTextInput = () => {
   const [appState, setAppState] = useRecoilState(recoilState);
   const textInput = createRef();
+
+  /**
+   * @param {import('react').KeyboardEvent<HTMLInputElement>} e
+   */
   function addTodo(e) {
     if (textInput.current === null) return;
     if (e.key === "Enter" && textInput.current.value.trim().length > 0) {
@@ -22,8 +27,9 @@ const NewTodoTextInput = () => {
       textInput.current.value = "";
     }
   }
+
   return html`
-      <${Layout}>
+    <${Layout}>
       <header className="header">
         <h1>todos</h1>
         <input
@@ -34,10 +40,11 @@ const NewTodoTextInput = () => {
           onKeyPress=${addTodo}
           data-testid="new-todo-input-text"
           data-cy="new-todo-input-text"
-          autoFocus
+          autofocus
         />
       </header>
     <//>
   `;
 };
+
 export default NewTodoTextInput;

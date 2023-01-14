@@ -1,4 +1,4 @@
-import {html} from 'htm/react'
+import { html } from "htm/react";
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { recoilState, LocalStorageKey } from "../dataStructure.js";
@@ -21,15 +21,18 @@ const TodoMVC = () => {
       <${Layout}>
       <section className="todoapp">
         <${NewTodoInput} />
-        ${appState.todoList.length ?
-          html`
-            <${TodoList} />
-            <${UnderBar} />
-          `
-          : null}
+        ${
+          appState.todoList.length
+            ? html`
+                <${TodoList} />
+                <${UnderBar} />
+              `
+            : null
+        }
       </section>
       <${Copyright} />
     </${Layout}>
   `;
 };
+
 export default TodoMVC;

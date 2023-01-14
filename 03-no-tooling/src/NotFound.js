@@ -1,4 +1,4 @@
-import {html} from 'htm/react'
+import { html } from "htm/react";
 const css = {
   alignItems: "center",
   display: "flex",
@@ -8,7 +8,6 @@ const css = {
 };
 
 export const NotFound = () =>
-  html`
-    <div data-cy="not-found-page" style=${css}>
-      <h1>Page Not Found</h1>
-    </div>`
+  html` <div data-cy="not-found-page" style=${css}>
+    <h1>Page Not Found</h1>
+  </div>`;

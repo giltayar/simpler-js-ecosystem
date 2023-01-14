@@ -13,18 +13,14 @@
     "start": "serve .",
     "start:watch": "concurrently npm:build:watch npm:browser-sync",
     "build": "npm run postcss",
+    "test": "tsc",
     "browser-sync": "browser-sync --no-ui --server . --port 3000 --files src --files public",
     "postcss": "postcss src/**/*.css -d public --use postcss-modules",
     "postcss:watch": "npm run postcss -- --watch",
     "build:watch": "npm run postcss -- --watch"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "devDependencies": {
+    "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",
     "browser-sync": "^2.27.11",
     "concurrently": "^7.6.0",

@@ -1,4 +1,4 @@
-import {html} from 'htm/react'
+import { html } from "htm/react";
 import { Link, useLocation } from "react-router-dom";
 
 const FilterLink = () => {
@@ -8,7 +8,7 @@ const FilterLink = () => {
       <li>
         <${Link}
           data-cy="all-filter"
-          className=${pathname === '/' ? 'selected' : ''}
+          className=${pathname === "/" ? "selected" : ""}
           to="/"
         >
           All
@@ -17,7 +17,7 @@ const FilterLink = () => {
       <li>
         <${Link}
           data-cy="active-filter"
-          className=${pathname === '/active' ? 'selected' : ''}
+          className=${pathname === "/active" ? "selected" : ""}
           to="/active"
         >
           Active
@@ -26,7 +26,7 @@ const FilterLink = () => {
       <li>
         <${Link}
           data-cy="completed-filter"
-          className=${pathname === '/completed' ? 'selected' : ''}
+          className=${pathname === "/completed" ? "selected" : ""}
           to="/completed"
         >
           Completed
@@ -35,4 +35,5 @@ const FilterLink = () => {
     </ul>
   `;
 };
+
 export default FilterLink;

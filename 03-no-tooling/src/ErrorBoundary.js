@@ -1,14 +1,20 @@
-import {html} from 'htm/react';
+import { html } from "htm/react";
 import { Component } from "react";
 import styled from "styled-components";
+
 class ErrorBoundary extends Component {
   state = {
     error: null,
     info: null,
   };
+
+  /**
+   * @param {any} error, @param {any} info
+   */
   componentDidCatch(error, info) {
     this.setState({ error, info });
   }
+
   render() {
     const { error } = this.state;
     if (error) {
@@ -18,6 +24,7 @@ class ErrorBoundary extends Component {
   }
 }
 export default ErrorBoundary;
+
 const Layout = styled.div`
   width: 100%;
   height: 100%;
@@ -32,12 +39,10 @@ const Message = styled.div`
   font-size: 24px;
   color: #78909c;
 `;
-const ErrorBoundaryFallbackComponent = () => html`
-    <${Layout}>
-    <${Message}>
-      Something Error Ooccurring
-      <span role="img" aria-label="face-emoji">
-        😞
-      </span>
-    <//>
-  <//>`;
+
+const ErrorBoundaryFallbackComponent = () => html` <${Layout}>
+  <${Message}>
+    Something Error Ooccurring
+    <span role="img" aria-label="face-emoji"> 😞 </span>
+  <//>
+<//>`;

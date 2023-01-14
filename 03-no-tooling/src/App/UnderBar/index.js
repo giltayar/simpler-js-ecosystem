@@ -1,4 +1,4 @@
-import {html} from 'htm/react'
+import { html } from "htm/react";
 import { useRecoilState } from "recoil";
 import { recoilState } from "../../dataStructure.js";
 import FilterLink from "./FilterLink/index.js";
@@ -22,22 +22,22 @@ const UnderBar = () => {
     <${Layout}>
       <footer className="footer">
         <span className="todo-count">
-          <strong data-cy="remaining-uncompleted-todo-count">${backlog}</strong>${' '}
-          item left
+          <strong data-cy="remaining-uncompleted-todo-count">${backlog}</strong
+          >${" "} item left
         </span>
         <${FilterLink} />
 
-        ${completed > 0 && html`
-          <button
-            onClick=${clearCompleted}
-            className="clear-completed"
-            data-cy="clear-completed-button"
-          >
-            Clear completed
-          </button>`
-        }
+        ${completed > 0 &&
+        html` <button
+          onClick=${clearCompleted}
+          className="clear-completed"
+          data-cy="clear-completed-button"
+        >
+          Clear completed
+        </button>`}
       </footer>
     <//>
   `;
 };
+
 export default UnderBar;

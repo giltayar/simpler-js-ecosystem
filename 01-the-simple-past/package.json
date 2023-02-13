@@ -1,6 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "start": "open ./index.html"
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
   }
 }

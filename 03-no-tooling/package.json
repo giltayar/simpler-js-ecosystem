@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "htm": "^3.1.1",
+    "postcss": "^8.4.23",
+    "postcss-cli": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1",
-    "recoil": "^0.7.6",
-    "styled-components": "^5.3.6"
+    "react-router-dom": "^6.11.1",
+    "recoil": "^0.7.7",
+    "styled-components": "^5.3.10"
   },
   "scripts": {
     "start": "serve .",
@@ -20,14 +23,13 @@
     "build:watch": "npm run postcss -- --watch"
   },
   "devDependencies": {
-    "@types/react-dom": "^18.0.10",
+    "@types/react-dom": "^18.2.4",
     "@types/styled-components": "^5.1.26",
-    "browser-sync": "^2.27.5",
-    "concurrently": "^7.6.0",
-    "postcss": "^8.4.21",
-    "postcss-cli": "^10.1.0",
+    "browser-sync": "^2.29.1",
+    "concurrently": "^8.0.1",
     "postcss-modules": "^6.0.0",
-    "prettier": "^2.8.4",
-    "serve": "^14.2.0"
+    "prettier": "^2.8.8",
+    "serve": "^14.2.0",
+    "typescript": "^5.0.4"
   }
 }
